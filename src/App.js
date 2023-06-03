@@ -1,7 +1,7 @@
-import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { Navbar, Sidebar, Footer } from './components'
-import styled from 'styled-components'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Navbar, Sidebar, Footer } from './components';
+import styled from 'styled-components';
 
 import {
   Home,
@@ -15,10 +15,9 @@ import {
   AuthWrapper,
 } from './pages';
 
-
 function App() {
   return (
-   
+    <AuthWrapper>
       <Router>
         <Navbar />
         <Sidebar />
@@ -40,8 +39,8 @@ function App() {
         </Routes>
         <Footer />
       </Router>
-    
+    </AuthWrapper>
   );
 }
 
-export default App
+export default App;
