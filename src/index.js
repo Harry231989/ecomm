@@ -16,14 +16,30 @@ import { Auth0Provider } from '@auth0/auth0-react';
 //     document.getElementById('root')
 // )
 
+//Domain
+//dev-tzcg6t2omgvluxty.eu.auth0.com
+
+//Client ID
+//11FLK4HBO8U1CaUrPlHjQRiZ06VozZFy
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <ProductsProvider>
-    <FilterProvider>
-      <CartProvider>
-        <App />
-      </CartProvider>
-    </FilterProvider>
-  </ProductsProvider>
+  <Auth0Provider
+    domain='dev-tzcg6t2omgvluxty.eu.auth0.com'
+    clientId='l0U4mWUOzjG9hsWBZEw9BstQHnK6G0Tg'
+    authorizationParams={{
+      redirect_uri: window.location.origin,
+    }}
+  >
+    <UserProvider>
+      <ProductsProvider>
+        <FilterProvider>
+          <CartProvider>
+            <App />
+          </CartProvider>
+        </FilterProvider>
+      </ProductsProvider>
+    </UserProvider>
+  </Auth0Provider>
 );
