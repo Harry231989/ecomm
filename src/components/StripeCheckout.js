@@ -20,6 +20,7 @@ const CheckoutForm = () => {
   const { myUser } = useUserContext();
   // const history = useHistory();
   // STRIPE STUFF
+  let navigate = useNavigate();
   const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState(null);
   const [processing, setProcessing] = useState('');
@@ -74,8 +75,6 @@ const CheckoutForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setProcessing(true);
-    //eslint-disable-next-line
-    const navigate = useNavigate();
     const payload = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
         card: elements.getElement(CardElement),
@@ -88,8 +87,10 @@ const CheckoutForm = () => {
       setError(null);
       setProcessing(false);
       setSucceeded(true);
-      clearCart();
+      //eslint-disable-next-line
+
       setTimeout(() => {
+        clearCart();
         navigate('/');
       }, 10000);
     }
